@@ -6,7 +6,7 @@
 /*   By: ltcherep <ltcherep@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 15:01:44 by ltcherep          #+#    #+#             */
-/*   Updated: 2025/04/08 15:07:44 by ltcherep         ###   ########.fr       */
+/*   Updated: 2025/04/10 13:49:27 by ltcherep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,15 @@ typedef struct s_env
 {
 
 }				t_env;
+
+typedef struct s_bloc
+{
+	char			*cmd;
+	char			**arg;
+	char			*input_redir;
+	char			*output_redir;
+	struct s_bloc	*next;
+}					t_bloc;
 
 //parsing
 //execution
