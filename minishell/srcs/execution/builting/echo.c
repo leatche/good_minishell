@@ -65,19 +65,8 @@ int	ft_check_echo (char *arg, int i)
 		return (0);
 	while (ft_found_n(arg[i], arg[i++]) == 1)
 		i++;
+	i--;
 	while (arg[i])
-		write
-	if (arg[i - 1] != "n")
-		{
-			if (arg[i - 1] == "-")
-				i--;
-			while (arg[i])
-			{
-				write(1, &arg[i], 1);
-				i++;
-			}
-		}
-		else
-			printf ("%s\n", arg);
+		res++;
 }
 
