@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL.H
-#define MINISHELL.H
+#ifndef MINISHELL_H
+#define MINISHELL_H
 
 //librairies
 # include <unistd.h>
@@ -40,5 +40,7 @@ typedef struct s_bloc
 
 //parsing
 //execution
-
+void	ft_echo(char *arg);
+int		ft_found_n(char arg, char arg2);
+int		ft_check_echo (char *arg, int i);
 #endif

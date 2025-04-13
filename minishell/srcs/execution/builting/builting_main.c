@@ -13,8 +13,21 @@
 #include "minishell.h"
 
 // il doit mettre dans son parsing que si il y a une commande avec la liste de builtings il renvoie a ft_builtings et que a ce moment les arguments ce soit une grande chaine de caractere et ne pas les separer
-void	ft_builtings(t_bloc *bloc)
+// void	ft_builtings(t_bloc *bloc)
+// {
+// 	if (bloc->cmd == "echo ")
+// 		ft_echo(void);
+// }
+
+int	main (int ac, char **av)
 {
-	if (bloc->cmd == "echo ")
-		ft_echo(void);
+	if (ac >= 2)
+	{
+		ft_echo(av[1]);
+	}
+	else
+	{
+		printf("error \n");
+		printf("num %d \n", ac);
+	}
 }

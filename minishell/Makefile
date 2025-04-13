@@ -13,11 +13,10 @@
 
 NAME = minishell
 
-SRCS_EXE		=	srcs/execution/general_function/builtings.c	\
+SRCS_EXE		=	srcs/execution/builting/builting_main.c	\
+					srcs/execution/builting/echo.c			\
 
-SRCS_PARSING	=	srcs/parsing/parsing.c		\
-
-SRCS = $(SRCS_PARSING) $(SRCS_EXE)
+SRCS = $(SRCS_EXE)
 
 OBJS = $(SRCS:.c=.o)
 
