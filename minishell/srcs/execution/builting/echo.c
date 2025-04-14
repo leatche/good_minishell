@@ -72,7 +72,7 @@
 // 	return (res);
 // }
 
-void	ft_echo(char **av)
+void	ft_echo(int ac, char **av)
 {
 	int		i;
 	int		res;
@@ -80,7 +80,7 @@ void	ft_echo(char **av)
 
 	i = 0;
 	res = 0;
-	arg = ft_one_string(av);
+	arg = ft_one_string(ac, av);
 	while (arg[i] && arg[i] == 32)
 		i++;
 	if (arg[i] && arg[i] == '-' && arg[i + 1] == 'n')
@@ -129,21 +129,28 @@ int	ft_check_echo (char *arg, int i)
 		i++;
 		res++;
 	}
-	res--;
 	return (res);
 }
 
-char	*ft_one_string(char **av)
+char	*ft_one_string(int ac, char **av)
 {
 	int		i;
 	char	*arg;
+	char *tmp;
 
-	i = 2;
-	while (av[i])
+	arg = NULL;
+	i = 1;
+	while (++i < ac)
 	{
+		tmp = arg;
 		arg = ft_strjoin(arg, av[i]);
+		free(tmp);
+		if (i >= ac - 1)
+			break;
+		tmp = arg;
 		arg = ft_strjoin(arg, " ");
-		i++;
+		free(tmp);	
 	}
+	printf (" voici la chaine %s\n", arg);
 	return (arg);
 }

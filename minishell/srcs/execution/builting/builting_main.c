@@ -34,7 +34,7 @@ int	is_builtin(char *cmd)
 int	main (int ac, char **av)
 {
 	if (ac >= 2)
-		ft_cd(ac, av);
+		ft_echo(ac, av);
 	else
 	{
 		printf("error \n");
