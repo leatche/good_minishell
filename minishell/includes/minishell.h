@@ -37,10 +37,12 @@ typedef struct s_bloc
 	char			*output_redir;
 	struct s_bloc	*next;
 }					t_bloc;
-
+//libft
+int	ft_strncmp(char *s1, char *s2, unsigned int n);
 //parsing
 //execution
 void	ft_echo(char *arg);
 int		ft_found_n(char arg, char arg2);
 int		ft_check_echo (char *arg, int i);
+int		is_builtin(char *cmd);
 #endif

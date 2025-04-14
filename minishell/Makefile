@@ -15,6 +15,7 @@ NAME = minishell
 
 SRCS_EXE		=	srcs/execution/builting/builting_main.c	\
 					srcs/execution/builting/echo.c			\
+					srcs/libft/ft_strncmp.c					\
 
 SRCS = $(SRCS_EXE)
 
