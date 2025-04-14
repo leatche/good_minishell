@@ -12,15 +12,75 @@
 
 #include "minishell.h"
 
-void	ft_echo(char *arg)
+// void	ft_echo(char *arg)
+// {
+// 	int		i;
+// 	int		res;
+// 	// char	*arg;
+
+// 	i = 0;
+// 	res = 0;
+// 	// arg = &bloc->arg;
+// 	while (arg[i] && arg[i] == 32)
+// 		i++;
+// 	if (arg[i] && arg[i] == '-' && arg[i + 1] == 'n')
+// 		res = ft_check_echo(arg, i);
+// 	if (res == 0)
+// 		printf ("%s\n", arg);
+// 	else
+// 	{
+// 		while (arg[i + res])
+// 		{
+// 			write(1, &arg[i + res], 1);
+// 			i++;
+// 		}
+// 	}
+// }
+
+// int	ft_found_n(char arg, char arg2)
+// {
+// 	if (arg == 32 || arg == 'n')
+// 		return (1);
+// 	if (arg == '-' )
+// 	{
+// 		if (arg2 != 'n')
+// 			return (-1);
+// 		return (1);
+// 	}
+// 	return (-1);
+// }
+
+// int	ft_check_echo (char *arg, int i)
+// {
+// 	int	res;
+
+// 	i += 2;
+// 	res = 2;
+// 	while (arg[i] && arg[i] == 'n')
+// 	{
+// 		i++;
+// 		res++;
+// 	}
+// 	if (arg[i] != 32 && (arg[j][i] != '-' || ( arg[i] == '-' && arg[i + 1] != 'n')))
+// 		return (0);
+// 	while (ft_found_n(arg[i], arg[i + 1]) == 1)
+// 	{
+// 		i++;
+// 		res++;
+// 	}
+// 	res--;
+// 	return (res);
+// }
+
+void	ft_echo(char **av)
 {
 	int		i;
 	int		res;
-	// char	*arg;
+	char	*arg;
 
 	i = 0;
 	res = 0;
-	// arg = &bloc->arg;
+	arg = ft_one_string(av);
 	while (arg[i] && arg[i] == 32)
 		i++;
 	if (arg[i] && arg[i] == '-' && arg[i + 1] == 'n')
@@ -35,6 +95,7 @@ void	ft_echo(char *arg)
 			i++;
 		}
 	}
+	free(arg);
 }
 
 int	ft_found_n(char arg, char arg2)
@@ -72,3 +133,17 @@ int	ft_check_echo (char *arg, int i)
 	return (res);
 }
 
+char	*ft_one_string(char **av)
+{
+	int		i;
+	char	*arg;
+
+	i = 2;
+	while (av[i])
+	{
+		arg = ft_strjoin(arg, av[i]);
+		arg = ft_strjoin(arg, " ");
+		i++;
+	}
+	return (arg);
+}

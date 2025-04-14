@@ -41,8 +41,14 @@ typedef struct s_bloc
 int	ft_strncmp(char *s1, char *s2, unsigned int n);
 //parsing
 //execution
-void	ft_echo(char *arg);
+void	ft_echo(char **av);
 int		ft_found_n(char arg, char arg2);
 int		ft_check_echo (char *arg, int i);
 int		is_builtin(char *cmd);
+char	*ft_strdup(const char *src);
+char	*ft_strjoin(char const *s1, char const *s2);
+size_t	ft_strlen(const char *src);
+char	*ft_one_string(char **av);
+void    ft_cd(int ac, char **av);
+void    ft_cd_exe(char **av);
 #endif

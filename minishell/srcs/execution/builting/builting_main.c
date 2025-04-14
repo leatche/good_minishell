@@ -12,7 +12,8 @@
 
 #include "minishell.h"
 
-// il doit mettre dans son parsing que si is_builtin marche, alors il y a une commande avec la liste de builtings il renvoie a ft_builtings et que a ce moment les arguments ce soit une grande chaine de caractere et ne pas les separer
+/*
+il doit mettre dans son parsing que si is_builtin marche, alors il y a une commande avec la liste de builtings il renvoie a ft_builtings et que a ce moment les arguments ce soit une grande chaine de caractere et ne pas les separer
 
 int	is_builtin(char *cmd)
 {
@@ -25,16 +26,15 @@ int	is_builtin(char *cmd)
 		return (1);
 	return (-1);
 }
-// 	if (bloc->cmd == "echo ")
-// 		ft_echo(void);
-// }
+	if (bloc->cmd == "echo ")
+		ft_echo(void);
+}
+*/
 
 int	main (int ac, char **av)
 {
 	if (ac >= 2)
-	{
-		ft_echo(av[1]);
-	}
+		ft_cd(ac, av);
 	else
 	{
 		printf("error \n");
