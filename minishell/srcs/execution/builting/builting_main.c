@@ -31,7 +31,8 @@ int	is_builtin(char *cmd)
 }
 */
 
-int main(int ac, char **av)
+int main(int ac, char **av, char **env)
 {
     ft_exit(ac, av);
+	printf("Didn't exited!\n");
 }

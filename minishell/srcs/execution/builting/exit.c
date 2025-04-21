@@ -25,15 +25,12 @@ void    ft_exit(int ac, char **av) // , char **env
 
 void    ft_exit_complex(char *av, int sign)
 {
-    if (sign == 1)
-        exit(ft_atoi(av));
-    else if (sign == 2)
-        exit((unsigned char)ft_atoi(av));
-    else
+    if (sign == -1)
     {
         printf("minishell: exit: %s: numeric argument required\n", av);
         exit(2);
     }
+    exit((unsigned char)ft_atoi(av));
 }
 
 int    ft_num(char *av)
