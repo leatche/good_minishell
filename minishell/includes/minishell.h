@@ -49,6 +49,12 @@ char	*ft_strdup(const char *src);
 char	*ft_strjoin(char const *s1, char const *s2);
 size_t	ft_strlen(const char *src);
 char	*ft_one_string(int ac, char **av);
-void    ft_cd(int ac, char **av);
-void    ft_cd_exe(char **av);
+// void    ft_cd(int ac, char **av);
+// void    ft_cd_exe(char **av);
+
+void    ft_exit(int ac, char **av);
+void    ft_exit_complex(char *av, int sign);
+int    ft_num(char *av);
+int    ft_exit_many();
+
 #endif

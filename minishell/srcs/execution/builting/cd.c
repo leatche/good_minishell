@@ -40,6 +40,7 @@ void    ft_cd_empty(char **env)
     path = getenv("HOME");
     ft_old_pwd(actual_path, env);
     chdir(path);
+    free (actual_path);
 }
 
 void    ft_cd_back(char **env)
@@ -52,6 +53,7 @@ void    ft_cd_back(char **env)
     ft_old_pwd(actual_path, env);
     chdir(future_path);
     printf("%s\n", future_path);
+    free (actual_path);
 }
 
 void    ft_cd_dir(char *av, char **env)
@@ -67,6 +69,7 @@ void    ft_cd_dir(char *av, char **env)
         perror("cd");
         return ;
     }
+    free (actual_path);
 }
 
 void    ft_old_pwd(char *path, char **env)

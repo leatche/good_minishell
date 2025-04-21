@@ -31,13 +31,7 @@ int	is_builtin(char *cmd)
 }
 */
 
-int	main (int ac, char **av)
+int main(int ac, char **av)
 {
-	if (ac >= 2)
-		ft_echo(ac, av);
-	else
-	{
-		printf("error \n");
-		printf("num %d \n", ac);
-	}
+    ft_exit(ac, av);
 }

@@ -14,5 +14,15 @@
 
 void    ft_pwd(int ac, char **av, char **env)
 {
-    
+    if (ac >= 2)
+        ft_exe_pwd(av[2], env);
+}
+
+void    ft_exe_pwd(char *av, char **env)
+{
+    char    *path;
+
+    path = getcwd(NULL, 0);
+    printf("%s\n", path);
+    free (path);
 }
