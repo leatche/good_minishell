@@ -89,6 +89,7 @@ void	ft_echo(int ac, char **av)
 		printf ("%s\n", arg);
 	else
 	{
+		///// gerer le cas de echo $?
 		while (arg[i + res])
 		{
 			write(1, &arg[i + res], 1);
@@ -151,6 +152,5 @@ char	*ft_one_string(int ac, char **av)
 		arg = ft_strjoin(arg, " ");
 		free(tmp);	
 	}
-	printf (" voici la chaine %s\n", arg);
 	return (arg);
 }

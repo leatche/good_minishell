@@ -36,6 +36,7 @@ typedef struct s_bloc
 	char			*input_redir;
 	char			*output_redir;
 	struct s_bloc	*next;
+	unsigned int	erreur;
 }					t_bloc;
 //libft
 int	ft_strncmp(char *s1, char *s2, unsigned int n);
@@ -51,6 +52,7 @@ size_t	ft_strlen(const char *src);
 char	*ft_one_string(int ac, char **av);
 // void    ft_cd(int ac, char **av);
 // void    ft_cd_exe(char **av);
+int	ft_atoi(const char *str);
 
 void    ft_exit(int ac, char **av);
 void    ft_exit_complex(char *av, int sign);

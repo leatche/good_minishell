@@ -26,9 +26,9 @@ void    ft_exit(int ac, char **av) // , char **env
 void    ft_exit_complex(char *av, int sign)
 {
     if (sign == 1)
-        exit(atoi(av)); ///// attention pas mon atoi !!!!!!!!!!!!!!!!!!!
+        exit(ft_atoi(av));
     else if (sign == 2)
-        exit((unsigned char)atoi(av));
+        exit((unsigned char)ft_atoi(av));
     else
     {
         printf("minishell: exit: %s: numeric argument required\n", av);
@@ -50,6 +50,8 @@ int    ft_num(char *av)
         sign = 2;
         i++;
     }
+    if (ft_strlen(av) >= 20)
+        return (-1);
     while (av[i])
     {
         if (av[i] < '0' || av[i] > '9')

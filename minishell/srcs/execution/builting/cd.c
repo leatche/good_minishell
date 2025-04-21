@@ -12,15 +12,18 @@
 
 #include "minishell.h"
 
-void    ft_cd(int ac, char **av, char **env)
+void    ft_cd(int ac, char **av, char **env, t_bloc *bloc)
 {
     if (ac == 3)
-        ft_cd_exe(av, env);
+        ft_cd_exe(av, env, bloc);
     else
-        printf("cd: too many arguments\n");
+    {
+        printf("minishell: cd: too many arguments\n");
+        bloc->erreur = 1;
+    } 
 }
 
-void    ft_cd_exe(char **av, char **env)
+void    ft_cd_exe(char **av, char **env, t_bloc *bloc)
 {
 
     if (av[2] == "" || av[2] == '~')
@@ -28,7 +31,7 @@ void    ft_cd_exe(char **av, char **env)
     else if (av[2] == '-')
         ft_cd_back(env);
     else
-        ft_cd_dir(av[2], env);
+        ft_cd_dir(av[2], env, bloc);
 }
 
 void    ft_cd_empty(char **env)
@@ -56,7 +59,7 @@ void    ft_cd_back(char **env)
     free (actual_path);
 }
 
-void    ft_cd_dir(char *av, char **env)
+void    ft_cd_dir(char *av, char **env, t_bloc *bloc)
 {
     char    *actual_path;
     char    *new_path;
@@ -66,7 +69,8 @@ void    ft_cd_dir(char *av, char **env)
     new_path = chdir(av);
     if (new_path != 0)
     {
-        perror("cd");
+        printf("bash: cd: %s: No such file or directory", av);
+        bloc->erreur = 1;
         return ;
     }
     free (actual_path);
