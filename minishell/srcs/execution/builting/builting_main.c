@@ -43,7 +43,7 @@ int main(int ac, char **av, char **envp)
 		ft_initialized_env(envp, bloc);
 		// while (42)
    		// ft_dispersion(ac, av, bloc);
-		ft_env(bloc);
+		// ft_env(bloc);
 		ft_free_all(bloc);
 		printf("end!\n");
 	}
