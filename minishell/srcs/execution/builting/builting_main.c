@@ -12,27 +12,80 @@
 
 #include "minishell.h"
 
-/*
-il doit mettre dans son parsing que si is_builtin marche, alors il y a une commande avec la liste de builtings il renvoie a ft_builtings et que a ce moment les arguments ce soit une grande chaine de caractere et ne pas les separer
+// void	ft_dispersion(int ac, char **av, t_bloc *bloc)
+// {
+// 	if (bloc->cmd == "echo")
+// 		ft_echo(ac, av);
+// 	else if (bloc->cmd == "cd")
+// 		ft_cd(ac, av, bloc);
+// 	else if (bloc->cmd == "pwd")
+// 		ft_pwd(ac, av, bloc);
+// 	else if (bloc->cmd == "exit")
+// 		ft_exit(ac, av, bloc);
+// 	else if (bloc->cmd == "env")
+// 		ft_env(bloc);
+// 	else if (bloc->cmd == "unset")
+// 		ft_unset();
+// 	else if (bloc->cmd == "export")
+// 		ft_export();
+// 	else
+// 		ft_execve();
+// }
 
-int	is_builtin(char *cmd)
+int main(int ac, char **av, char **envp)
 {
-	if (!cmd)
-		return (-1);
-	if (!ft_strncmp("echo", cmd, INT_MAX) || !ft_strncmp("cd", cmd, INT_MAX) \
-	|| !ft_strncmp("pwd", cmd, INT_MAX) || !ft_strncmp("export", cmd, INT_MAX) \
-	|| !ft_strncmp("unset", cmd, INT_MAX) || !ft_strncmp("env", cmd, INT_MAX) \
-	|| !ft_strncmp("exit", cmd, INT_MAX))
-		return (1);
-	return (-1);
-}
-	if (bloc->cmd == "echo ")
-		ft_echo(void);
-}
-*/
+	(void )*av;
+	if (ac == 2)
+	{
+		t_bloc	*bloc;
 
-int main(int ac, char **av, char **env)
+		bloc = malloc(sizeof(t_bloc));
+		ft_initialized_env(envp, bloc);
+		// while (42)
+   		// ft_dispersion(ac, av, bloc);
+		ft_env(bloc);
+		ft_free_all(bloc);
+		printf("end!\n");
+	}
+
+}
+
+void	ft_initialized_env(char **envp, t_bloc *bloc)
 {
-    ft_exit(ac, av);
-	printf("Didn't exited!\n");
+	int		i;
+	int		size;
+
+	i = 0;
+	size = ft_nb_lines_env(envp);
+	bloc->tab_env = malloc(sizeof(char *) * (size + 1));
+	while (envp[i])
+	{
+		bloc->tab_env[i] = ft_strdup(envp[i]);
+		i++;
+	}
+	bloc->tab_env[i] = NULL;
+}
+
+void	ft_free_all(t_bloc *bloc)
+{
+	int	i;
+
+	i = 0;
+	while (bloc->tab_env[i])
+	{
+		free(bloc->tab_env[i]);
+		i++;
+	}
+	free(bloc->tab_env);
+	free(bloc);
+}
+
+int	 ft_nb_lines_env(char **envp)
+{
+	int	i;
+
+	i = 0;
+	while (envp[i])
+		i++;
+	return (i);
 }

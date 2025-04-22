@@ -12,10 +12,10 @@
 
 #include "minishell.h"
 
-void    ft_cd(int ac, char **av, char **env, t_bloc *bloc)
+void    ft_cd(int ac, char **av, t_bloc *bloc)
 {
     if (ac == 3)
-        ft_cd_exe(av, env, bloc);
+        ft_cd_exe(av, bloc);
     else
     {
         printf("minishell: cd: too many arguments\n");
@@ -23,49 +23,49 @@ void    ft_cd(int ac, char **av, char **env, t_bloc *bloc)
     } 
 }
 
-void    ft_cd_exe(char **av, char **env, t_bloc *bloc)
+void    ft_cd_exe(char **av, t_bloc *bloc)
 {
 
     if (av[2] == "" || av[2] == '~')
-        ft_cd_empty(env);
+        ft_cd_empty(bloc);
     else if (av[2] == '-')
-        ft_cd_back(env);
+        ft_cd_back(bloc);
     else
-        ft_cd_dir(av[2], env, bloc);
+        ft_cd_dir(av[2], bloc);
 }
 
-void    ft_cd_empty(char **env)
+void    ft_cd_empty(t_bloc *bloc)
 {
     char    *path;
     char    *actual_path;
 
     actual_path = getcwd(NULL, 0);
     path = getenv("HOME");
-    ft_old_pwd(actual_path, env);
+    ft_old_pwd(actual_path, bloc);
     chdir(path);
     free (actual_path);
 }
 
-void    ft_cd_back(char **env)
+void    ft_cd_back(t_bloc *bloc)
 {
     char    *future_path;
     char    *actual_path;
 
     actual_path = getcwd(NULL, 0);
     future_path = getenv("OLDPWD");
-    ft_old_pwd(actual_path, env);
+    ft_old_pwd(actual_path, bloc);
     chdir(future_path);
     printf("%s\n", future_path);
     free (actual_path);
 }
 
-void    ft_cd_dir(char *av, char **env, t_bloc *bloc)
+void    ft_cd_dir(char *av, t_bloc *bloc)
 {
     char    *actual_path;
     char    *new_path;
 
     actual_path = getcwd(NULL, 0);
-    ft_old_pwd(actual_path, env);
+    ft_old_pwd(actual_path, bloc);
     new_path = chdir(av);
     if (new_path != 0)
     {
@@ -76,7 +76,7 @@ void    ft_cd_dir(char *av, char **env, t_bloc *bloc)
     free (actual_path);
 }
 
-void    ft_old_pwd(char *path, char **env)
+void    ft_old_pwd(char *path, t_bloc *bloc)
 {
 
 }

@@ -12,13 +12,13 @@
 
 #include "minishell.h"
 
-void    ft_pwd(int ac, char **av, char **env)
+void    ft_pwd(int ac, char **av, t_bloc *bloc)
 {
     if (ac >= 2)
-        ft_exe_pwd(av[2], env);
+        ft_exe_pwd(av[2], bloc);
 }
 
-void    ft_exe_pwd(char *av, char **env)
+void    ft_exe_pwd(char *av, t_bloc *bloc)
 {
     char    *path;
 

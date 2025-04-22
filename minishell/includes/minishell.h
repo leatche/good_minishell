@@ -24,11 +24,6 @@
 # include <limits.h>
 
 //structure
-typedef struct s_env
-{
-
-}				t_env;
-
 typedef struct s_bloc
 {
 	char			*cmd;
@@ -37,6 +32,7 @@ typedef struct s_bloc
 	char			*output_redir;
 	struct s_bloc	*next;
 	unsigned int	erreur;
+	char			**tab_env;
 }					t_bloc;
 //libft
 int	ft_strncmp(char *s1, char *s2, unsigned int n);
@@ -45,7 +41,6 @@ int	ft_strncmp(char *s1, char *s2, unsigned int n);
 void	ft_echo(int ac, char **av);
 int		ft_found_n(char arg, char arg2);
 int		ft_check_echo (char *arg, int i);
-int		is_builtin(char *cmd);
 char	*ft_strdup(const char *src);
 char	*ft_strjoin(char const *s1, char const *s2);
 size_t	ft_strlen(const char *src);
@@ -54,9 +49,13 @@ char	*ft_one_string(int ac, char **av);
 // void    ft_cd_exe(char **av);
 int	ft_atoi(const char *str);
 
-void    ft_exit(int ac, char **av);
+void    ft_exit(int ac, char **av, t_bloc *bloc);
 void    ft_exit_complex(char *av, int sign);
 int    ft_num(char *av);
 int    ft_exit_many();
-
+void    ft_env(t_bloc *bloc);
+char *ft_strchr(const char *s, int c);
+void	ft_initialized_env(char **envp, t_bloc *bloc);
+void	ft_free_all(t_bloc *bloc);
+int		ft_nb_lines_env(char **envp);
 #endif

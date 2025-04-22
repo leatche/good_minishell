@@ -12,13 +12,19 @@
 
 #include "minishell.h"
 
-void    ft_exit(int ac, char **av) // , char **env
+void    ft_exit(int ac, char **av, t_bloc *bloc)
 {
     printf("exit\n");
     if (ac == 2)
+    {
+        free_all(bloc);
         exit(0);
+    }  
     else if (ac == 3 || ft_num(av[2]) == -1)
+    {
+        free_all(bloc);
         ft_exit_complex(av[2], ft_num(av[2]));
+    } 
     else
         ft_exit_many();
 }
