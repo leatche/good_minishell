@@ -4,17 +4,10 @@ void    ft_export(int ac, char **av, t_bloc *bloc)
 {
     char    **env;
 
-    env = ft_cpy_tab(bloc);
     if (ac == 2)
-        ft_export_simple(env);
+        ft_export_simple(env, bloc);
     else
-        ft_export_many();
-    tri alphabetique 
-    rajoute declare....
-    print
-    destroy 
-
-    si autre chose
+        ft_export_many(av, bloc);
 }
 
 char    **ft_cpy_tab(t_bloc *bloc)
@@ -33,35 +26,30 @@ char    **ft_cpy_tab(t_bloc *bloc)
     return (env);
 }
 
-void    ft_export_simple(char **env)
+void    ft_export_simple(char **env, t_bloc *bloc)
 {
     int i;
 
     i = 0;
-    env = ft_sorting_alph(env);
+    env = ft_cpy_tab(bloc);
+    env = ft_sorting_env(env);
     while (env[i])
     {
-        //  char *equal = ft_strchr(env[i], '=');
-        // if (equal)
-        // {
-        //     int key_len = equal - env[i];
-        //     printf("declare -x ");
-        //     write(1, env[i], key_len + 1); // key=
-        //     printf("\"%s\"\n", equal + 1); // value
-        // }
-        // else
-        //     printf("declare -x %s\n", env[i]);
-        // i++;
+        printf("%s\n", env[i]);
+        free(env[i]);
+        i++;
     }
+    free(env);
 }
 
 char    **ft_sorting_alph(char **env)
 {
     int i;
 
-    while (ft_sorted(env) != 1)
+    while (ft_sorted(env) == -1)
     {
         i = 0;
+
         while (env[i] && env[i + 1])
         {
             if (ft_strcmp(env[i], env[i + 1]) > 0)
@@ -73,13 +61,14 @@ char    **ft_sorting_alph(char **env)
 
 }
 
-void    ft_swap(char *a, char *b)
+void    ft_swap(char **a, char **b)
 {
     char *tmp;
 
-    *tmp = *a;
+
+    tmp = *a;
     *a = *b;
-    *b = *tmp;
+    *b = tmp;
 }
 
 int ft_sorted(char **env)
@@ -94,4 +83,30 @@ int ft_sorted(char **env)
         i++;
     }
     return (1);
+}
+
+void    ft_export_many(char **av, t_bloc *bloc)
+{
+    int i;
+
+    i = 0;
+
+
+}
+
+char    **ft_sorting_env(char **env)
+{
+    int i;
+    char    *tmp;
+
+    i = 0;
+    env = ft_sorting_alph(env);
+    while (env[i])
+    {
+        tmp = env[i];
+        env[i] = ft_strjoin("declare -x ", tmp);
+        free(tmp);
+        i++;
+    }
+    return (env);
 }

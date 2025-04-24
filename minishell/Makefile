@@ -22,6 +22,9 @@ SRCS_EXE		=	srcs/execution/builting/builting_main.c	\
 					srcs/libft/ft_atoi.c					\
 					srcs/libft/ft_strchr.c					\
 					srcs/execution/builting/env.c			\
+					srcs/execution/builting/export.c		\
+					srcs/libft/ft_strcmp.c					\
+
 
 SRCS = $(SRCS_EXE)
 

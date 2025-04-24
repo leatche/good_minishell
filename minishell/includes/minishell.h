@@ -58,4 +58,13 @@ char *ft_strchr(const char *s, int c);
 void	ft_initialized_env(char **envp, t_bloc *bloc);
 void	ft_free_all(t_bloc *bloc);
 int		ft_nb_lines_env(char **envp);
+void    ft_export(int ac, char **av, t_bloc *bloc);
+char    **ft_cpy_tab(t_bloc *bloc);
+void    ft_export_simple(char **env, t_bloc *bloc);
+char    **ft_sorting_alph(char **env);
+void    ft_swap(char **a, char **b);
+int ft_sorted(char **env);
+int ft_strcmp(const char *s1, const char *s2);
+void    ft_export_many(av, bloc);
+
 #endif
