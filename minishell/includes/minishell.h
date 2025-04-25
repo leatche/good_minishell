@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ltcherep <ltcherep@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: tcherepoff <tcherepoff@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 15:01:44 by ltcherep          #+#    #+#             */
-/*   Updated: 2025/04/10 13:49:27 by ltcherep         ###   ########.fr       */
+/*   Updated: 2025/04/25 15:26:38 by tcherepoff       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,13 @@
 # include <limits.h>
 
 //structure
+
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}					t_list;
+
 typedef struct s_bloc
 {
 	char			*cmd;
@@ -33,6 +40,8 @@ typedef struct s_bloc
 	struct s_bloc	*next;
 	unsigned int	erreur;
 	char			**tab_env;
+	char			**secon_env;
+	t_list			**list;
 }					t_bloc;
 //libft
 int	ft_strncmp(char *s1, char *s2, unsigned int n);
