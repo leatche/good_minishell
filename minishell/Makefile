@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ltcherep <ltcherep@student.42nice.fr>      +#+  +:+       +#+         #
+#    By: tcherepoff <tcherepoff@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/08 15:13:51 by ltcherep          #+#    #+#              #
-#    Updated: 2025/04/08 15:15:59 by ltcherep         ###   ########.fr        #
+#    Updated: 2025/04/26 17:39:56 by tcherepoff       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,8 @@ SRCS_EXE		=	srcs/execution/builting/builting_main.c	\
 					srcs/execution/builting/env.c			\
 					srcs/execution/builting/export.c		\
 					srcs/libft/ft_strcmp.c					\
+					srcs/libft/ft_strdup_equal.c			\
+
 
 
 SRCS = $(SRCS_EXE)

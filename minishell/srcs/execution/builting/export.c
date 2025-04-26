@@ -6,7 +6,7 @@
 /*   By: tcherepoff <tcherepoff@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 17:28:47 by tcherepoff        #+#    #+#             */
-/*   Updated: 2025/04/25 20:47:36 by tcherepoff       ###   ########.fr       */
+/*   Updated: 2025/04/26 18:52:19 by tcherepoff       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,16 @@ void	ft_export(int ac, char **av, t_bloc *bloc)
 {
 	char	**env;
 
+	env = ft_cpy_tab(bloc);
 	if (ac == 2)
-		ft_export_simple(env, bloc);
-	else
+	{
 		ft_export_many(av, bloc);
+		ft_export_simple(env, bloc);
+	}
+	// 	ft_export_simple(env, bloc);
+	// else
+	// 	ft_export_many(av, bloc);
+
 }
 
 char	**ft_cpy_tab(t_bloc *bloc)
@@ -43,7 +49,6 @@ void	ft_export_simple(char **env, t_bloc *bloc)
 	int i;
 
 	i = 0;
-	env = ft_cpy_tab(bloc);
 	env = ft_sorting_env(env);
 	while (env[i])
 	{
@@ -52,6 +57,14 @@ void	ft_export_simple(char **env, t_bloc *bloc)
 		i++;
 	}
 	free(env);
+	i = 0;
+	while (bloc->secon_env[i])
+	{
+		printf("%s\n", bloc->secon_env[i]);
+		free(bloc->secon_env[i]);
+		i++;
+	}
+	free(bloc->secon_env);
 }
 
 char	**ft_sorting_alph(char **env)
@@ -101,23 +114,34 @@ void	ft_export_many(char **av, t_bloc *bloc)
 	int		i;
 	char	*var;
 	int		a;
+	int		sign;
 
+	//dit si oui ou non il y a un +
+	sign = ft_plus(av[2]);
+	//var donnant la variable a rechercher.
 	var = ft_pars_add(av[2]);
-	if (var != NULL)
+	//dit si la variable existe
+	a = ft_search(bloc->secon_env, var);
+	// si variable existe et qu'il y a un +
+	if (a != -1 && sign == -1)
 	{
-		a = ft_search(bloc->secon_env, var);
-		if (a != -1)
-		{
-			var = ft_rest(av[2], bloc->secon_env[a]);
-			bloc->secon_env[a] = ft_strjoin(bloc->secon_env[a], ft_rest(av, bloc->secon_env[a]));
-			free (var);
-			return ;
-		}
+		var = ft_rest(av[2], bloc->secon_env[a]);
+		bloc->secon_env[a] = ft_strjoin(bloc->secon_env[a], ft_rest(av[2], bloc->secon_env[a]));
 		free (var);
 	}
-	i = ft_nb_lines_env(bloc->secon_env);
-	bloc->secon_env[i] = ft_strdup_cro(av[2], a);
+	// si variable existe et qu'il y pas de +
+	else if (a != -1 && sign == -1)
+		bloc->secon_env[a] = ft_strdup_cro(av[2], sign);
+	// si variable existe pas
+	else
+	{
+		free (var);
+		// a la fin du tableau tu ecris
+		i = ft_nb_lines_env(bloc->secon_env);
+		//recopie
+		bloc->secon_env[i] = ft_strdup_cro(av[2], sign);
 	}
+}
 
 char	**ft_sorting_env(char **env)
 {
@@ -136,7 +160,7 @@ char	**ft_sorting_env(char **env)
 	return (env);
 }
 
-char	*ft_strdup_cro(const char *src, int a)
+char	*ft_strdup_cro(const char *src, int sign)
 {
 	int			i;
 	int			g;
@@ -151,7 +175,7 @@ char	*ft_strdup_cro(const char *src, int a)
 	{
 		if (src[i] == '"')
 			i++;
-		if (a == -1 && src[i] == '+' && src[i + 1] == '=')
+		if (sign == 1 && src[i] == '+' && src[i + 1] == '=')
 			i++;
 		new[g] = src[i];
 		i++;
@@ -167,30 +191,32 @@ char	*ft_pars_add(char *av)
 	char	*new;
 
 	i = 0;
+	if (!av)
+		return (NULL);
 	new = malloc(sizeof(char *) * ft_strlen(av));
 	while (av[i])
 	{
-		if (av[i + 1] && av[i + 2] && av[i + 1] == '+' && av[i + 2] == '=')
-			return (new);
 		new[i] = av[i];
+		if (av[i + 1] && av[i + 2] && ((av[i + 1] == '+' && av[i + 2] == '=') || av[i + 1] == '='))
+			return (new);
 		i++;
 	}
 	free (new);
 	return (NULL);
 }
 
-int	ft_search(char **env, char *var)
+int	ft_search(char **envm, char *var)
 {
 	int	i;
 	int	k;
 
 	i = 0;
-	while (env[i])
+	while (envm && envm[i])
 	{
 		k = 0;
-		while (var[k] && env[i][k] && env[i][k] == var[k])
+		while (var[k] && envm[i][k] && envm[i][k] == var[k])
 			k++;
-		if (env[i][k] == '=')
+		if (envm[i][k] == '=')
 			return (i);
 		i++;
 	}
@@ -206,7 +232,7 @@ char	*ft_rest(char *av, char *tab)
 	i = 0;
 	k = 0;
 	b = malloc(sizeof(char *) * ft_strlen(av));
-	while (av[i - 2] != '+' && av[i - 1] != '=')
+	while (av[i - 1] != '+' && av[i - 2] != '=')
 		i++;
 	if (ft_no_equal(tab) == 1)
 		i--;
@@ -216,9 +242,10 @@ char	*ft_rest(char *av, char *tab)
 		i++;
 		k++;
 	}
+	av = b;
 	b[k] = '\0';
 	av = b;
-	free (b);
+	// free (b);
 	return (av);
 }
 
@@ -234,4 +261,20 @@ int	ft_no_equal(char *tab)
 		i++;
 	}
 	return (1);
+}
+
+int	ft_plus(char *av)
+{
+	int	i;
+
+	i = 0;
+	if (!av)
+		return (0);
+	while(av[i])
+	{
+		if (av[i] == '+' && av[i + 1] == '=')
+			return (1);
+		i++;
+	}
+	return (0);
 }

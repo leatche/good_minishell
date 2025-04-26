@@ -6,7 +6,7 @@
 /*   By: tcherepoff <tcherepoff@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 15:01:44 by ltcherep          #+#    #+#             */
-/*   Updated: 2025/04/25 15:26:38 by tcherepoff       ###   ########.fr       */
+/*   Updated: 2025/04/26 17:00:10 by tcherepoff       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,13 @@ char    **ft_sorting_alph(char **env);
 void    ft_swap(char **a, char **b);
 int ft_sorted(char **env);
 int ft_strcmp(const char *s1, const char *s2);
-void    ft_export_many(av, bloc);
-
+void	ft_export_many(char **av, t_bloc *bloc);
+char	**ft_sorting_env(char **env);
+char	*ft_strdup_cro(const char *src, int sign);
+char	*ft_pars_add(char *av);
+int	ft_search(char **env, char *var);
+char	*ft_rest(char *av, char *tab);
+int	ft_no_equal(char *tab);
+int	ft_plus(char *av);
+char	*ft_strdup_equal(const char *src);
 #endif

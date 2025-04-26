@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builting_main.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ltcherep <ltcherep@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: tcherepoff <tcherepoff@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 13:51:58 by ltcherep          #+#    #+#             */
-/*   Updated: 2025/04/10 14:02:27 by ltcherep         ###   ########.fr       */
+/*   Updated: 2025/04/26 16:49:52 by tcherepoff       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int main(int ac, char **av, char **envp)
 		bloc = malloc(sizeof(t_bloc));
 		ft_initialized_env(envp, bloc);
 		// while (42)
-   		// ft_dispersion(ac, av, bloc);
+		// ft_dispersion(ac, av, bloc);
 		// ft_env(bloc);
 		ft_export(ac, av, bloc);
 		ft_free_all(bloc);
