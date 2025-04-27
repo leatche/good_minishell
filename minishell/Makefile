@@ -6,7 +6,7 @@
 #    By: tcherepoff <tcherepoff@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/08 15:13:51 by ltcherep          #+#    #+#              #
-#    Updated: 2025/04/26 17:39:56 by tcherepoff       ###   ########.fr        #
+#    Updated: 2025/04/27 17:19:27 by tcherepoff       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,8 @@ SRCS_EXE		=	srcs/execution/builting/builting_main.c	\
 					srcs/execution/builting/export.c		\
 					srcs/libft/ft_strcmp.c					\
 					srcs/libft/ft_strdup_equal.c			\
+					srcs/execution/builting/export_cpy.c	\
+
 
 
 

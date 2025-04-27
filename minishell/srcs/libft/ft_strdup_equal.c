@@ -6,36 +6,11 @@
 /*   By: tcherepoff <tcherepoff@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 16:07:08 by tcherepoff        #+#    #+#             */
-/*   Updated: 2025/04/26 18:52:17 by tcherepoff       ###   ########.fr       */
+/*   Updated: 2025/04/27 19:22:43 by tcherepoff       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-// char	*ft_strdup_equal(const char *src)
-// {
-// 	int			i;
-// 	char	*new;
-
-// 	i = 0;
-// 	if (!src)
-// 		return (NULL);
-// 	new = malloc(sizeof(char) * (ft_strlen(src) + 3));
-// 	while (src[i])
-// 	{
-// 		new[i] = src[i];
-// 		if (src[i] == '=')
-// 		{
-// 			new[i + 1] = '"';
-// 			while (src[++i])
-// 				new[i + 1] = src[i];
-// 		}
-// 		i++;
-// 	}
-// 	new[i + 1] = '"';
-// 	new[i + 1] = '\0';
-// 	return (new);
-// }
 
 char	*ft_strdup_equal(const char *src)
 {
@@ -53,14 +28,15 @@ char	*ft_strdup_equal(const char *src)
 	while (src[i])
 	{
 		new[j++] = src[i];
-		if (src[i] == '=' && count == 0)
+		if (src[i] == '=' && count == 0 && src[i + 1] != '"')
 		{
 			new[j++] = '"';
 			count++;
 		}
 		i++;
 	}
-	new[j] = '"';
+	if (src[ft_strlen(src)] != '"')
+		new[j] = '"';
 	new[j + 1] = '\0';
 	return (new);
 }

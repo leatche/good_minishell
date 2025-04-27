@@ -6,7 +6,7 @@
 /*   By: tcherepoff <tcherepoff@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 15:01:44 by ltcherep          #+#    #+#             */
-/*   Updated: 2025/04/26 17:00:10 by tcherepoff       ###   ########.fr       */
+/*   Updated: 2025/04/27 19:24:21 by tcherepoff       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	ft_free_all(t_bloc *bloc);
 int		ft_nb_lines_env(char **envp);
 void    ft_export(int ac, char **av, t_bloc *bloc);
 char    **ft_cpy_tab(t_bloc *bloc);
-void    ft_export_simple(char **env, t_bloc *bloc);
+void    ft_export_simple(t_bloc *bloc);
 char    **ft_sorting_alph(char **env);
 void    ft_swap(char **a, char **b);
 int ft_sorted(char **env);
@@ -83,4 +83,7 @@ char	*ft_rest(char *av, char *tab);
 int	ft_no_equal(char *tab);
 int	ft_plus(char *av);
 char	*ft_strdup_equal(const char *src);
+char **add_to_env(char **env, char *to_add, int i);
+void	ft_replace_all(t_bloc *bloc, int a, char *var);
+void	ft_replace(t_bloc *bloc, int a, char *var);
 #endif

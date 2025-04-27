@@ -6,7 +6,7 @@
 /*   By: tcherepoff <tcherepoff@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 13:51:58 by ltcherep          #+#    #+#             */
-/*   Updated: 2025/04/26 16:49:52 by tcherepoff       ###   ########.fr       */
+/*   Updated: 2025/04/27 16:19:21 by tcherepoff       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,14 @@ void	ft_initialized_env(char **envp, t_bloc *bloc)
 	i = 0;
 	size = ft_nb_lines_env(envp);
 	bloc->tab_env = malloc(sizeof(char *) * (size + 1));
+	bloc->secon_env = malloc(sizeof(char *) * (size + 1));
 	while (envp[i])
 	{
 		bloc->tab_env[i] = ft_strdup(envp[i]);
 		i++;
 	}
 	bloc->tab_env[i] = NULL;
+	bloc->secon_env = NULL;
 }
 
 void	ft_free_all(t_bloc *bloc)
@@ -78,6 +80,17 @@ void	ft_free_all(t_bloc *bloc)
 		i++;
 	}
 	free(bloc->tab_env);
+	i = 0;
+	if (bloc->secon_env)
+	{
+		while (bloc->secon_env[i])
+		{
+			free(bloc->secon_env[i]);
+			i++;
+		}
+		free(bloc->secon_env);
+	}
+	
 	free(bloc);
 }
 
@@ -86,6 +99,8 @@ int	 ft_nb_lines_env(char **envp)
 	int	i;
 
 	i = 0;
+	if (!envp)
+		return (0);
 	while (envp[i])
 		i++;
 	return (i);
