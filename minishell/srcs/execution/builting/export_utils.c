@@ -6,7 +6,7 @@
 /*   By: tcherepoff <tcherepoff@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 11:12:28 by tcherepoff        #+#    #+#             */
-/*   Updated: 2025/04/28 11:16:34 by tcherepoff       ###   ########.fr       */
+/*   Updated: 2025/04/28 23:30:01 by tcherepoff       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ char	*ft_pars_add(char *av)
 
 	i = 0;
 	if (!av)
-		return (NULL);
-	new = malloc(sizeof(char ) * (ft_strlen(av) + 1));
-	while (av[i])
+		return (NULL); // strdup("") ?
+	new = malloc(sizeof(char ) * (ft_strlen(av) + 1)); // too much
+	while (av[i]) // strndup(av, 0, len_to_+_or_-)
 	{
 		new[i] = av[i];
 		if (av[i + 1] && av[i + 2]
@@ -73,7 +73,7 @@ char	*ft_pars_add(char *av)
 		i++;
 	}
 	free (new);
-	return (NULL);
+	return (ft_strdup(av));
 }
 
 int	ft_search(char **env, char *var)

@@ -6,35 +6,17 @@
 /*   By: tcherepoff <tcherepoff@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 11:16:08 by tcherepoff        #+#    #+#             */
-/*   Updated: 2025/04/28 11:53:26 by tcherepoff       ###   ########.fr       */
+/*   Updated: 2025/04/28 23:36:27 by tcherepoff       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*ft_rest(char *av, char *tab)
+char	*ft_rest(char *av)
 {
-	int		i;
-	int		k;
-	char	*b;
-
-	i = 0;
-	k = 0;
-	b = malloc(sizeof(char *) * ft_strlen(av));
-	while (av[i - 1] != '+' && av[i - 2] != '=')
-		i++;
-	if (ft_no_equal(tab) == 1)
-		i--;
-	while (av[i])
-	{
-		b[k] = av[i];
-		i++;
-		k++;
-	}
-	av = b;
-	b[k] = '\0';
-	av = b;
-	return (av);
+	char *b = ft_strdup(ft_strchr(av, '=') + 1);
+	printf("rest = '%s'\n", b);
+	return (b);
 }
 
 int	ft_no_equal(char *tab)
@@ -42,7 +24,7 @@ int	ft_no_equal(char *tab)
 	int	i;
 
 	i = 0;
-	while (tab[i])
+	while (tab[i]) // tab == NULL > segfault
 	{
 		if (tab[i] == '=')
 			return (-1);
@@ -71,13 +53,14 @@ int	ft_check_start(char *av)
 {
 	int	i;
 
-	i = 0;
 	if (av[0] != '_' && ft_isalpha(av[0]) == 0)
-		return (-1);
-	while (av[++i])
+		return (-1); // TODO: Return 0 instead of -1, so you can use function in a if, as a boolean
+	i = 1;
+	while (av[i] && av[i] != '+' && av[i] != '=')
 	{
 		if (av[i] != '_' && ft_isalpha(av[i]) == 0 && ft_isdigit(av[i]) == 0)
 			return (-1);
+		i++;
 	}
 	return (1);
 }

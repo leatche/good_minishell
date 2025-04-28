@@ -6,7 +6,7 @@
 /*   By: tcherepoff <tcherepoff@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 13:51:58 by ltcherep          #+#    #+#             */
-/*   Updated: 2025/04/28 12:32:07 by tcherepoff       ###   ########.fr       */
+/*   Updated: 2025/04/28 23:15:52 by tcherepoff       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,39 +32,28 @@
 // 		ft_execve();
 // }
 
-// int	main(int ac, char **av, char **envp)
-// {
-// 	t_bloc	*bloc;
+int	main(int ac, char **av, char **envp)
+{
+	t_bloc	*bloc;
 
-// 	if (ac == 2)
-// 	{
-// 		bloc = malloc(sizeof(t_bloc));
-// 		ft_initialized_env(envp, bloc);
-// 		// /* while (42)
-// 		// // ft_dispersion(ac, av, bloc);
-// 		// */
-// 		ft_export(ac, av, bloc);
-// 		ft_free_all(bloc);
-// 		printf("end!\n");
-// 	}
-// }
+	if (ac == 2)
+	{
+		bloc = malloc(sizeof(t_bloc));
+		bloc->tab_env = ft_cpy_tab(envp);
+		bloc->var = NULL;
+		// /* while (42)
+		// // ft_dispersion(ac, av, bloc);
+		// */
+		ft_export(ac, av, bloc);
+		ft_free_all(bloc);
+		printf("end!\n");
+	}
+}
 
 void	ft_initialized_env(char **envp, t_bloc *bloc)
 {
-	int		i;
-	int		size;
-
-	i = 0;
-	size = ft_nb_lines_env(envp);
-	bloc->tab_env = malloc(sizeof(char *) * (size + 1));
-	bloc->var = malloc(sizeof(char ) + 1);
+	bloc->tab_env = ft_cpy_tab(envp);
 	bloc->var = NULL;
-	while (envp[i])
-	{
-		bloc->tab_env[i] = ft_strdup(envp[i]);
-		i++;
-	}
-	bloc->tab_env[i] = NULL;
 }
 
 void	ft_free_all(t_bloc *bloc)
@@ -88,7 +77,7 @@ int	ft_nb_lines_env(char **envp)
 	i = 0;
 	if (!envp)
 		return (0);
-	while (envp[i])
+	while (envp[i]) // if no NULL at the end > segfault
 		i++;
 	return (i);
 }

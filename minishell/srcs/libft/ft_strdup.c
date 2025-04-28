@@ -6,7 +6,7 @@
 /*   By: tcherepoff <tcherepoff@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 16:06:24 by tcherepoff        #+#    #+#             */
-/*   Updated: 2025/04/28 11:39:27 by tcherepoff       ###   ########.fr       */
+/*   Updated: 2025/04/28 23:09:51 by tcherepoff       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strdup(const char *src)
 	i = 0;
 	if (!src)
 		return (NULL);
-	new = malloc(sizeof(char) * ft_strlen(src) + 1);
+	new = malloc(sizeof(char) * (ft_strlen(src) + 1));
 	while (src[i])
 	{
 		new[i] = src[i];
