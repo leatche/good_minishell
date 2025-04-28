@@ -6,7 +6,7 @@
 /*   By: tcherepoff <tcherepoff@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 16:32:16 by tcherepoff        #+#    #+#             */
-/*   Updated: 2025/04/27 19:32:41 by tcherepoff       ###   ########.fr       */
+/*   Updated: 2025/04/28 11:11:12 by tcherepoff       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*ft_strdup_cro(const char *src, int sign)
 	return (new);
 }
 
-char **add_to_env(char **env, char *to_add, int i)
+char	**add_to_env(char **env, char *to_add, int i)
 {
 	char	**new_env;
 	int		k;
@@ -79,12 +79,11 @@ char	**ft_cpy_tab(t_bloc *bloc)
 
 char	**ft_sorting_alph(char **env)
 {
-	int i;
+	int	i;
 
 	while (ft_sorted(env) == -1)
 	{
 		i = 0;
-
 		while (env[i] && env[i + 1])
 		{
 			if (ft_strcmp(env[i], env[i + 1]) > 0)

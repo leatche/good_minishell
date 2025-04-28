@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ltcherep <ltcherep@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: tcherepoff <tcherepoff@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 15:09:03 by ltcherep          #+#    #+#             */
-/*   Updated: 2025/04/10 15:58:08 by ltcherep         ###   ########.fr       */
+/*   Updated: 2025/04/28 11:10:23 by tcherepoff       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	ft_found_n(char arg, char arg2)
 	return (-1);
 }
 
-int	ft_check_echo (char *arg, int i)
+int	ft_check_echo(char *arg, int i)
 {
 	int	res;
 
@@ -62,7 +62,8 @@ int	ft_check_echo (char *arg, int i)
 		i++;
 		res++;
 	}
-	if (arg[i] != 32 && (arg[i] != '-' || ( arg[i] == '-' && arg[i + 1] != 'n')))
+	if (arg[i] != 32 && (arg[i] != '-'
+			|| (arg[i] == '-' && arg[i + 1] != 'n')))
 		return (0);
 	while (ft_found_n(arg[i], arg[i + 1]) == 1)
 	{
@@ -76,7 +77,7 @@ char	*ft_one_string(int ac, char **av)
 {
 	int		i;
 	char	*arg;
-	char *tmp;
+	char	*tmp;
 
 	arg = NULL;
 	i = 1;
@@ -86,10 +87,10 @@ char	*ft_one_string(int ac, char **av)
 		arg = ft_strjoin(arg, av[i]);
 		free(tmp);
 		if (i >= ac - 1)
-			break;
+			break ;
 		tmp = arg;
 		arg = ft_strjoin(arg, " ");
-		free(tmp);	
+		free(tmp);
 	}
 	return (arg);
 }

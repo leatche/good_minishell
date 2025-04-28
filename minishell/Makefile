@@ -6,28 +6,30 @@
 #    By: tcherepoff <tcherepoff@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/08 15:13:51 by ltcherep          #+#    #+#              #
-#    Updated: 2025/04/27 17:19:27 by tcherepoff       ###   ########.fr        #
+#    Updated: 2025/04/28 11:35:46 by tcherepoff       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME = minishell
 
-SRCS_EXE		=	srcs/execution/builting/builting_main.c	\
-					srcs/execution/builting/echo.c			\
-					srcs/libft/ft_strncmp.c					\
-					srcs/libft/ft_strdup.c					\
-					srcs/libft/ft_strjoin.c					\
-					srcs/libft/ft_strlen.c					\
-					srcs/libft/ft_atoi.c					\
-					srcs/libft/ft_strchr.c					\
-					srcs/execution/builting/env.c			\
-					srcs/execution/builting/export.c		\
-					srcs/libft/ft_strcmp.c					\
-					srcs/libft/ft_strdup_equal.c			\
-					srcs/execution/builting/export_cpy.c	\
-
-
+SRCS_EXE		=	srcs/execution/builting/builting_main.c		\
+					srcs/execution/builting/echo.c				\
+					srcs/libft/ft_strncmp.c						\
+					srcs/libft/ft_strdup.c						\
+					srcs/libft/ft_strjoin.c						\
+					srcs/libft/ft_strlen.c						\
+					srcs/libft/ft_atoi.c						\
+					srcs/libft/ft_strchr.c						\
+					srcs/execution/builting/env.c				\
+					srcs/execution/builting/export.c			\
+					srcs/libft/ft_strcmp.c						\
+					srcs/libft/ft_strdup_equal.c				\
+					srcs/execution/builting/export_cpy.c		\
+					srcs/libft/ft_isalpha.c						\
+					srcs/execution/builting/export_utils.c		\
+					srcs/execution/builting/export_utils_2.c	\
+					srcs/execution/builting/export_replace.c	\
 
 
 SRCS = $(SRCS_EXE)
