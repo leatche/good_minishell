@@ -6,7 +6,7 @@
 /*   By: tcherepoff <tcherepoff@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 17:28:47 by tcherepoff        #+#    #+#             */
-/*   Updated: 2025/04/28 11:32:52 by tcherepoff       ###   ########.fr       */
+/*   Updated: 2025/04/28 11:51:48 by tcherepoff       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,15 +63,13 @@ void	ft_export_many(char **av, t_bloc *bloc)
 	free (bloc->var);
 }
 
-int	ft_whitch(char **av, t_bloc *bloc)
+int	ft_whitch(char *av, t_bloc *bloc)
 {
-	int		a;
 	int		sign;
-	char	*var;
 
-	sign = ft_plus(av[1]);
-	bloc->var = ft_pars_add(av[1]);
-	bloc->index = ft_search(bloc->tab_env, var);
+	sign = ft_plus(av);
+	bloc->var = ft_pars_add(av);
+	bloc->index = ft_search(bloc->tab_env, bloc->var);
 	if (bloc->index != -1 && sign == 1)
 		return (22);
 	else if (bloc->index != -1 && sign != 1)

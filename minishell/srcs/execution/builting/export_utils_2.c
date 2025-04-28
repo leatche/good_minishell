@@ -6,7 +6,7 @@
 /*   By: tcherepoff <tcherepoff@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 11:16:08 by tcherepoff        #+#    #+#             */
-/*   Updated: 2025/04/28 11:19:34 by tcherepoff       ###   ########.fr       */
+/*   Updated: 2025/04/28 11:53:26 by tcherepoff       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,11 @@ int	ft_check_start(char *av)
 	int	i;
 
 	i = 0;
-	if (av[0] != "_" && ft_isalpha(av[0]) == 0)
+	if (av[0] != '_' && ft_isalpha(av[0]) == 0)
 		return (-1);
 	while (av[++i])
 	{
-		if (av[i] != "_" && ft_isalpha(av[i]) == 0 && ft_isdigit(av[i]) == 0)
+		if (av[i] != '_' && ft_isalpha(av[i]) == 0 && ft_isdigit(av[i]) == 0)
 			return (-1);
 	}
 	return (1);

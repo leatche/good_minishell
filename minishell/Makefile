@@ -6,7 +6,7 @@
 #    By: tcherepoff <tcherepoff@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/08 15:13:51 by ltcherep          #+#    #+#              #
-#    Updated: 2025/04/28 11:35:46 by tcherepoff       ###   ########.fr        #
+#    Updated: 2025/04/28 11:54:14 by tcherepoff       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRCS_EXE		=	srcs/execution/builting/builting_main.c		\
 					srcs/execution/builting/export_utils.c		\
 					srcs/execution/builting/export_utils_2.c	\
 					srcs/execution/builting/export_replace.c	\
+					srcs/libft/ft_isdigit.c						\
 
 
 SRCS = $(SRCS_EXE)

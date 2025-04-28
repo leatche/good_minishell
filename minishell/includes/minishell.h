@@ -6,7 +6,7 @@
 /*   By: tcherepoff <tcherepoff@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 15:01:44 by ltcherep          #+#    #+#             */
-/*   Updated: 2025/04/28 11:27:39 by tcherepoff       ###   ########.fr       */
+/*   Updated: 2025/04/28 11:50:46 by tcherepoff       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,6 @@ void	ft_replace(t_bloc *bloc, int a, char *var);
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
 int		ft_exit_many(void);
+int		ft_whitch(char *av, t_bloc *bloc);
+int		ft_check_start(char *av);
 #endif
